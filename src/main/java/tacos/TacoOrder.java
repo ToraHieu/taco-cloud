@@ -6,24 +6,37 @@ import org.hibernate.validator.constraints.CreditCardNumber;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Data
-public class TacoOrder {
+public class TacoOrder implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
+    private Long id;
+
+    private Date placeAt;
+
+    @Size(max = 50, message = "Character limit exceeded")
     @NotBlank(message = "Deliver is required")
     private String deliveryName;
 
+    @Size(max = 50, message = "Character limit exceeded")
     @NotBlank(message = "Street is required")
     private String deliveryStreet;
 
+    @Size(max = 50, message = "Character limit exceeded")
     @NotBlank(message = "City is required")
     private String deliveryCity;
 
-    @NotBlank(message = "State is required")
+    @Size(min = 2, max = 2, message = "State abbreviation is required")
     private String deliveryState;
 
+    @Size(max = 10, message = "Invalid Zip code")
     @NotBlank(message = "Zip code is required")
     private String deliveryZip;
 
