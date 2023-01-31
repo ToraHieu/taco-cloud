@@ -12,6 +12,7 @@ import tacos.TacoOrder;
 import tacos.data.OrderRepository;
 
 import javax.validation.Valid;
+import java.util.Date;
 
 @Controller
 @RequestMapping("/orders")
@@ -36,6 +37,7 @@ public class OrderController {
             return "orderForm";
         }
 
+        order.setPlaceAt(new Date());
         orderRepo.save(order);
         sessionStatus.setComplete();
 
