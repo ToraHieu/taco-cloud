@@ -2,12 +2,13 @@ package tacos.web;
 
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
-import tacos.Ingredient;
+import tacos.IngredientUDT;
+import tacos.TacoUDRUtils;
 import tacos.data.IngredientRepository;
 
 
 @Component
-public class IngredientByIdConverter implements Converter<String, Ingredient> {
+public class IngredientByIdConverter implements Converter<String, IngredientUDT> {
 
     private IngredientRepository ingredientRepository;
 
@@ -16,7 +17,7 @@ public class IngredientByIdConverter implements Converter<String, Ingredient> {
     }
 
     @Override
-    public Ingredient convert(String id) {
-        return ingredientRepository.findById(id).orElse(null);
+    public IngredientUDT convert(String id) {
+        return TacoUDRUtils.toIngredientUDT(ingredientRepository.findById(id).orElse(null));
     }
 }
