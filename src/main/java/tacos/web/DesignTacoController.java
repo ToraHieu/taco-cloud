@@ -12,7 +12,7 @@ import tacos.TacoOrder;
 import tacos.TacoUDRUtils;
 import tacos.data.IngredientRepository;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
