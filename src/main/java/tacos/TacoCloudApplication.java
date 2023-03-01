@@ -5,6 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 import tacos.Ingredient.Type;
 import tacos.data.IngredientRepository;
 
@@ -16,6 +17,7 @@ public class TacoCloudApplication {
     }
 
     @Bean
+    @Profile("!prod")
     public CommandLineRunner dataLoader(IngredientRepository repo) {
         return args -> {
             repo.save(new Ingredient("FLTO", "Flour Tortilla", Type.WRAP));

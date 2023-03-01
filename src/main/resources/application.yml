@@ -1,6 +1,8 @@
 spring:
-  data:
-    cassandra:
-      keyspace-name: tacocloud
-      schema-action: recreate
-      local-datacenter: datacenter1
+  datasource:
+    generate-unique-name: false
+    name: tacocloud
+
+taco:
+  orders:
+    page-size: 10
