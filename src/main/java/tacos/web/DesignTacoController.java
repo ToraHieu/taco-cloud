@@ -9,7 +9,6 @@ import tacos.Ingredient;
 import tacos.Ingredient.Type;
 import tacos.Taco;
 import tacos.TacoOrder;
-import tacos.TacoUDRUtils;
 import tacos.data.IngredientRepository;
 
 import jakarta.validation.Valid;
@@ -59,7 +58,7 @@ public class DesignTacoController {
             return "design";
         }
 
-        tacoOrder.addTaco(TacoUDRUtils.toTacoUDT(taco));
+        tacoOrder.addTaco(taco);
         log.info("Processing taco: {}", taco);
 
         return "redirect:/orders/current";
